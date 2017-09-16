@@ -1,5 +1,5 @@
 FROM python:alpine
-MAINTAINER Antonio Marcos Peña "amarcos@ayesa.com"
+MAINTAINER Antonio Marcos Peña "antoniomark93@gmail.com"
 
 ENV FLASK_APP=/usr/netfficient/app/app.py
 ENV FLASK_DEBUG=1
@@ -13,4 +13,4 @@ VOLUME /usr/netfficient/app
 
 EXPOSE 5000
 
-ENTRYPOINT ["flask", "run"]
+ENTRYPOINT ["flask", "run", "--host=0.0.0.0"]
