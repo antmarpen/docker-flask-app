@@ -1,10 +1,14 @@
-FROM ubuntu:latest
-MAINTAINER Antonio Marcos "amarcos@ayesa.com"
-RUN apt-get update -y
-RUN apt-get install -y python3
-RUN apt-get install -y python3-pip python3-dev build-essential
-COPY . /app
-WORKDIR /app
-RUN pip3 install -r requirements.txt
-ENTRYPOINT ["python"]
-CMD ["app.py"]
+FROM python:alpine
+MAINTAINER Antonio Marcos Peña "amarcos@ayesa.com"
+
+
+COPY ./requirements.txt /usr/netfficient/app/requirements.txt
+WORKDIR /usr/netfficient/app
+
+RUN pip install -r requirements.txt
+
+VOLUME /usr/netfficient/app
+
+EXPOSE 5000
+
+ENTRYPOINT ["python", "app.py"]
